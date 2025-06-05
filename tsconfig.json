@@ -1,3 +1,174 @@
+/**
+ * @proyect PruebaTecnica
+ * @file tsconfig.json
+ * @description Configuración de TypeScript para el proyecto React Native
+ * @author Guillermo Corredor
+ * @created 5/06/2025
+ *
+ * @note
+ * Este archivo configura las opciones del compilador TypeScript para el proyecto.
+ * Define la configuración base, las opciones del compilador y los alias de importación.
+ * Se ha ajustado para ser compatible con las versiones específicas de las dependencias del proyecto.
+ */
+
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  /**
+   * @property extends
+   * @description Extiende la configuración base de TypeScript para React Native
+   * @type {string}
+   */
+  "extends": "@react-native/typescript-config/tsconfig.json",
+
+  /**
+   * @property compilerOptions
+   * @description Opciones del compilador TypeScript
+   * @type {Object}
+   */
+  "compilerOptions": {
+    /**
+     * @property target
+     * @description Especifica la versión de ECMAScript de salida
+     * @type {string}
+     */
+    "target": "esnext",
+
+    /**
+     * @property module
+     * @description Especifica el sistema de módulos
+     * @type {string}
+     */
+    "module": "NodeNext",
+
+    /**
+     * @property lib
+     * @description Especifica las bibliotecas de TypeScript a incluir
+     * @type {string[]}
+     */
+    "lib": ["es6", "dom", "esnext"],
+
+    /**
+     * @property jsx
+     * @description Especifica la generación de JSX para React Native
+     * @type {string}
+     */
+    "jsx": "react-native",
+
+    /**
+     * @property noEmit
+     * @description No emite salidas
+     * @type {boolean}
+     */
+    "noEmit": true,
+
+    /**
+     * @property isolatedModules
+     * @description Asegura que cada archivo pueda ser compilado de forma segura sin depender de otras importaciones
+     * @type {boolean}
+     */
+    "isolatedModules": true,
+
+    /**
+     * @property strict
+     * @description Habilita todas las opciones de comprobación de tipo estrictas
+     * @type {boolean}
+     */
+    "strict": true,
+
+    /**
+     * @property moduleResolution
+     * @description Especifica la estrategia de resolución de módulos
+     * @type {string}
+     */
+    "moduleResolution": "nodenext",
+
+    /**
+     * @property resolveJsonModule
+     * @description Permite importar módulos JSON
+     * @type {boolean}
+     */
+    "resolveJsonModule": true,
+
+    /**
+     * @property allowSyntheticDefaultImports
+     * @description Permite importaciones predeterminadas de módulos sin un export default
+     * @type {boolean}
+     */
+    "allowSyntheticDefaultImports": true,
+
+    /**
+     * @property esModuleInterop
+     * @description Habilita la interoperabilidad entre módulos CommonJS y ES
+     * @type {boolean}
+     */
+    "esModuleInterop": true,
+
+    /**
+     * @property skipLibCheck
+     * @description Omite la comprobación de tipos en archivos de declaración
+     * @type {boolean}
+     */
+    "skipLibCheck": true,
+
+    /**
+     * @property types
+     * @description Especifica los paquetes de tipos a incluir sin importarlos en el código fuente
+     * @type {string[]}
+     */
+    "types": ["jest", "node"],
+
+    /**
+     * @property forceConsistentCasingInFileNames
+     * @description Garantiza que las referencias a los nombres de archivos tengan el uso de mayúsculas y minúsculas correcto
+     * @type {boolean}
+     */
+    "forceConsistentCasingInFileNames": true,
+
+    /**
+     * @property baseUrl
+     * @description URL base para resolución de módulos
+     * @type {string}
+     */
+    "baseUrl": "./",
+
+    /**
+     * @property paths
+     * @description Mapeo de rutas para alias de importación
+     * @type {Object.<string, string[]>}
+     */
+    "paths": {
+      // Alias root
+      "~/*": ["*"],
+      // Alias base app
+      "@src/*": ["src/*"],
+      // Alias para atoms
+      "@atoms/*": ["src/atoms/*"],
+      "@atoms-molecule/*": ["src/atoms-molecule/*"],
+      // Alias para core app
+      "@core-app/*": ["src/core-app/*"],
+      // Alias para App
+      "@navigation/*": ["src/navigation/*"],
+      // Alias en global
+      "@global/*": ["src/global/*"],
+      "@assets/*": ["src/global/assets/*"],
+      "@fonts/*": ["src/global/assets/fonts/*"],
+      "@svg/*": ["src/global/assets/svg/*"],
+      "@theme/*": ["src/global/theme/*"],
+      "@types/*": ["src/global/types/*"],
+      "@utils/*": ["src/global/utils/*"]
+    }
+  },
+
+  /**
+   * @property exclude
+   * @description Archivos y carpetas a excluir de la compilación
+   * @type {string[]}
+   */
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"],
+
+  /**
+   * @property include
+   * @description Archivos y carpetas a incluir en la compilación
+   * @type {string[]}
+   */
+  "include": ["src/**/*", "types/**/*"]
 }

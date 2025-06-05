@@ -1,14 +1,296 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 Prueba Técnica React Native Senior
 
-# Getting Started
+Una aplicación React Native robusta y escalable que demuestra las mejores prácticas de desarrollo para aplicaciones móviles empresariales.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🚀 Características Principales
 
-## Step 1: Start Metro
+- **Arquitectura Modular**: Implementación de Atomic Design para componentes escalables
+- **TypeScript**: Tipado fuerte para mayor robustez y mantenibilidad
+- **Navegación Avanzada**: Stack, Tabs y Drawer navigation con React Navigation v7
+- **Gestión de Estado**: Zustand para un estado global eficiente y persistente
+- **API Integration**: Cliente HTTP robusto con Axios e interceptores
+- **Animaciones**: React Native Reanimated 3 para animaciones fluidas
+- **Almacenamiento**: AsyncStorage y MMKV para persistencia de datos
+- **Testing**: Configuración completa con Jest y Testing Library
+- **Error Handling**: Boundary de errores y manejo global de excepciones
+- **Internacionalización**: Soporte multi-idioma preparado
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🏗️ Arquitectura del Proyecto
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+```
+src/
+├── atoms/                    # Componentes atómicos básicos (botones, inputs, texto)
+├── atoms-molecule/           # Componentes moleculares (cards, forms, modals)
+├── core-app/                 # Núcleo de la aplicación (providers, configuración)
+├── navigation/               # Configuración de navegación y rutas
+└── global/                   # Recursos globales compartidos
+    ├── assets/               # Recursos estáticos (imágenes, iconos)
+    │   ├── fonts/           # Fuentes personalizadas
+    │   └── svg/             # Iconos SVG
+    ├── theme/                # Sistema de temas y estilos
+    ├── types/                # Definiciones TypeScript globales
+    └── utils/                # Funciones utilitarias y helpers
+```
+
+## 🛠️ Tecnologías Utilizadas
+
+### Core
+
+- **React Native**: 0.78.2
+- **React**: 19.0.0
+- **TypeScript**: 5.8.3
+
+### Navegación
+
+- **@react-navigation/native**: ^7.1.10
+- **@react-navigation/stack**: ^7.3.3
+- **@react-navigation/bottom-tabs**: ^7.3.14
+- **@react-navigation/drawer**: ^7.4.1
+
+### Estado y Datos
+
+- **Zustand**: ^5.0.5
+- **Axios**: ^1.9.0
+- **@react-native-async-storage/async-storage**: ^2.1.2
+- **react-native-mmkv**: ^3.2.0
+
+### UI y Animaciones
+
+- **react-native-reanimated**: 3.17.2
+- **react-native-gesture-handler**: ^2.25.0
+- **react-native-svg**: ^15.12.0
+- **react-native-linear-gradient**: ^2.8.3
+
+### Desarrollo
+
+- **ESLint**: ^9.28.0
+- **Prettier**: 3.5.3
+- **Husky**: ^9.1.7
+- **Jest**: ^29.7.0
+
+## 📋 Requisitos Previos
+
+- **Node.js**: >= 18.0.0
+- **npm** o **Yarn**
+- **React Native CLI**
+- **Android Studio** (para Android)
+- **Xcode** (para iOS - solo macOS)
+
+## ⚡ Instalación Rápida
+
+### 1. Clonar el repositorio
+
+```bash
+git clone [URL_DEL_REPOSITORIO]
+cd pruebatecnica
+```
+
+### 2. Instalar dependencias
+
+```bash
+# Usando npm
+npm install
+
+# O usando Yarn
+yarn install
+```
+
+### 3. Configuración iOS (solo macOS)
+
+```bash
+# Instalar CocoaPods dependencies
+cd ios && pod install && cd ..
+```
+
+### 4. Iniciar Metro Bundler
+
+```bash
+# Usando npm
+npm start
+
+# O usando Yarn
+yarn start
+```
+
+### 5. Ejecutar la aplicación
+
+#### Android
+
+```bash
+# Usando npm
+npm run android
+
+# O usando Yarn
+yarn android
+```
+
+#### iOS
+
+```bash
+# Usando npm
+npm run ios
+
+# O usando Yarn
+yarn ios
+```
+
+## 🧹 Scripts Disponibles
+
+### Desarrollo
+
+- `npm start` - Inicia Metro Bundler
+- `npm run android` - Ejecuta en Android
+- `npm run ios` - Ejecuta en iOS
+
+### Calidad de Código
+
+- `npm run lint` - Ejecuta ESLint
+- `npm run format` - Formatea código con Prettier
+- `npm run format:all` - Formatea todos los archivos TypeScript/JavaScript
+
+### Testing
+
+- `npm test` - Ejecuta tests con Jest
+
+### Limpieza
+
+- `npm run clean:node` - Limpia node_modules y reinstala
+- `npm run clean:android` - Limpieza completa de Android
+- `npm run clean:ios` - Limpieza completa de iOS
+- `npm run pod:reset` - Resetea CocoaPods en iOS
+
+## 📱 Funcionalidades Implementadas
+
+### 🔐 Autenticación
+
+- Sistema de login/registro completo
+- Persistencia de sesión
+- Recuperación de contraseña
+- Gestión de tokens JWT
+
+### 🧭 Navegación
+
+- Stack Navigation para flujos lineales
+- Tab Navigation para navegación principal
+- Drawer Navigation para menú lateral
+- Deep linking configurado
+
+### 📊 Gestión de Estado
+
+- Store global con Zustand
+- Persistencia automática
+- Estados de loading y error
+- Optimistic updates
+
+### 🌐 API Integration
+
+- Cliente HTTP robusto
+- Interceptores de request/response
+- Manejo de errores centralizado
+- Refresh de tokens automático
+
+### 🎨 UI/UX
+
+- Sistema de temas dinámico
+- Componentes reutilizables
+- Animaciones fluidas
+- Diseño responsive
+
+### 📱 Características Nativas
+
+- Almacenamiento seguro
+- Gestión de permisos
+- Navegación por gestos
+- Safe Area handling
+
+## 🔧 Configuración de Alias
+
+El proyecto utiliza alias de importación para una mejor organización:
+
+```typescript
+// Ejemplos de uso
+import {Button} from "@atoms/Button";
+import {LoginForm} from "@atoms-molecule/LoginForm";
+import {theme} from "@theme/index";
+import {User} from "@types/index";
+import {formatDate} from "@utils/dateUtils";
+```
+
+## 🧪 Testing
+
+```bash
+# Ejecutar todos los tests
+npm test
+
+# Ejecutar tests en modo watch
+npm test -- --watch
+
+# Ejecutar tests con coverage
+npm test -- --coverage
+```
+
+## 📝 Convenciones de Código
+
+### Nomenclatura
+
+- **Componentes**: PascalCase (`UserProfile.tsx`)
+- **Hooks**: camelCase con prefijo `use` (`useAuthStore.ts`)
+- **Utilities**: camelCase (`formatUtils.ts`)
+- **Constants**: SCREAMING_SNAKE_CASE (`API_ENDPOINTS.ts`)
+
+### Estructura de Archivos
+
+- Cada componente en su propia carpeta con `index.ts`
+- Tests junto a los archivos correspondientes (`.test.tsx`)
+- Tipos en archivos separados cuando son complejos
+
+## 🚀 Deployment
+
+### Android
+
+```bash
+# Build de producción
+npx react-native build-android --mode=release
+```
+
+### iOS
+
+```bash
+# Build de producción
+npx react-native build-ios --mode=Release
+```
+
+## 🤝 Contribución
+
+1. Fork del proyecto
+2. Crear rama para feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit de cambios (`git commit -am 'Agregar nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Crear Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## 👨‍💻 Autor
+
+**Guillermo Corredor**
+
+- Email: [tu-email@example.com]
+- LinkedIn: [tu-linkedin]
+- GitHub: [tu-github]
+
+## 📞 Soporte
+
+Si tienes alguna pregunta o problema:
+
+1. Revisa los [Issues existentes](../../issues)
+2. Crea un [nuevo Issue](../../issues/new)
+3. Contacta al autor directamente
+
+---
+
+⭐ **¡No olvides dar una estrella si este proyecto te fue útil!**
 
 ```sh
 # Using npm
@@ -57,41 +339,3 @@ npm run ios
 # OR using Yarn
 yarn ios
 ```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
