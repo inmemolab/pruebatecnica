@@ -58,21 +58,29 @@ module.exports = {
     "^~(.*)$": "<rootDir>/$1",
     // Alias base app
     "^@src/(.*)$": "<rootDir>/src/$1",
+    "@components/*": ["src/components/*"],
+    // Alias para screens
+    "^@screens/(.*)$": "<rootDir>/src/screens/$1",
+    // Alias para hooks
+    "^@hooks/(.*)$": "<rootDir>/src/hooks/$1",
+    // Alias para context
+    "^@context/(.*)$": "<rootDir>/src/context/$1",
+    // Alias para types
+    "^@types/(.*)$": "<rootDir>/src/types/$1",
     // Alias para atoms
     "^@atoms/(.*)$": "<rootDir>/src/atoms/$1",
     "^@atoms-molecule/(.*)$": "<rootDir>/src/atoms-molecule/$1",
-    // Alias para core app
-    "^@core-app/(.*)$": "<rootDir>/src/core-app/$1",
     // Alias para navegación
     "^@navigation/(.*)$": "<rootDir>/src/navigation/$1",
-    // Alias en global
+    // Alias para global
     "^@global/(.*)$": "<rootDir>/src/global/$1",
     "^@assets/(.*)$": "<rootDir>/src/global/assets/$1",
     "^@fonts/(.*)$": "<rootDir>/src/global/assets/fonts/$1",
     "^@svg/(.*)$": "<rootDir>/src/global/assets/svg/$1",
     "^@theme/(.*)$": "<rootDir>/src/global/theme/$1",
-    "^@types/(.*)$": "<rootDir>/src/global/types/$1",
-    "^@utils/(.*)$": "<rootDir>/src/global/utils/$1"
+    "^@global-types/(.*)$": "<rootDir>/src/global/types/$1",
+    "^@utils/(.*)$": "<rootDir>/src/global/utils/$1",
+    "^@stores/(.*)$": "<rootDir>/src/global/stores/$1"
   },
 
   /**

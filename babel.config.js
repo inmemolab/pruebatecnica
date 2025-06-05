@@ -54,21 +54,28 @@ module.exports = {
           "~": "./",
           // Alias base app
           "@src": "./src",
+          // Alias para screens
+          "@screens": "./src/screens",
+          // Alias para hooks
+          "@hooks": "./src/hooks",
+          // Alias para context
+          "@context": "./src/context",
+          // Alias para types
+          "@types": "./src/types",
           // Alias para atoms
           "@atoms": "./src/atoms",
           "@atoms-molecule": "./src/atoms-molecule",
-          // Alias para core app
-          "@core-app": "./src/core-app",
           // Alias para navegación
           "@navigation": "./src/navigation",
-          // Alias en global
+          // Alias para global
           "@global": "./src/global",
           "@assets": "./src/global/assets",
           "@fonts": "./src/global/assets/fonts",
           "@svg": "./src/global/assets/svg",
           "@theme": "./src/global/theme",
-          "@types": "./src/global/types",
-          "@utils": "./src/global/utils"
+          "@global-types": "./src/global/types",
+          "@utils": "./src/global/utils",
+          "@stores": "./src/global/stores"
         }
       }
     ]
