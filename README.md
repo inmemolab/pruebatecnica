@@ -1,341 +1,180 @@
-# 📱 Prueba Técnica React Native Senior
+# 📱 Prueba Técnica React Native - Catálogo de Productos
 
-Una aplicación React Native robusta y escalable que demuestra las mejores prácticas de desarrollo para aplicaciones móviles empresariales.
+Una aplicación React Native que presenta un catálogo de productos con navegación fluida, animaciones profesionales y arquitectura modular.
 
-## 🚀 Características Principales
+## 🚀 Instrucciones para Ejecutar la Aplicación
 
-- **Arquitectura Modular**: Implementación de Atomic Design para componentes escalables
-- **TypeScript**: Tipado fuerte para mayor robustez y mantenibilidad
-- **Navegación Avanzada**: Stack, Tabs y Drawer navigation con React Navigation v7
-- **Gestión de Estado**: Zustand para un estado global eficiente y persistente
-- **API Integration**: Cliente HTTP robusto con Axios e interceptores
-- **Animaciones**: React Native Reanimated 3 para animaciones fluidas
-- **Almacenamiento**: AsyncStorage y MMKV para persistencia de datos
-- **Testing**: Configuración completa con Jest y Testing Library
-- **Error Handling**: Boundary de errores y manejo global de excepciones
-- **Internacionalización**: Soporte multi-idioma preparado
-
-## 🏗️ Arquitectura del Proyecto
-
-```
-src/
-├── atoms/                    # Componentes atómicos básicos (botones, inputs, texto)
-├── atoms-molecule/           # Componentes moleculares (cards, forms, modals)
-├── core-app/                 # Núcleo de la aplicación (providers, configuración)
-├── navigation/               # Configuración de navegación y rutas
-└── global/                   # Recursos globales compartidos
-    ├── assets/               # Recursos estáticos (imágenes, iconos)
-    │   ├── fonts/           # Fuentes personalizadas
-    │   └── svg/             # Iconos SVG
-    ├── theme/                # Sistema de temas y estilos
-    ├── types/                # Definiciones TypeScript globales
-    └── utils/                # Funciones utilitarias y helpers
-```
-
-## 🛠️ Tecnologías Utilizadas
-
-### Core
-
-- **React Native**: 0.78.2
-- **React**: 19.0.0
-- **TypeScript**: 5.8.3
-
-### Navegación
-
-- **@react-navigation/native**: ^7.1.10
-- **@react-navigation/stack**: ^7.3.3
-- **@react-navigation/bottom-tabs**: ^7.3.14
-- **@react-navigation/drawer**: ^7.4.1
-
-### Estado y Datos
-
-- **Zustand**: ^5.0.5
-- **Axios**: ^1.9.0
-- **@react-native-async-storage/async-storage**: ^2.1.2
-- **react-native-mmkv**: ^3.2.0
-
-### UI y Animaciones
-
-- **react-native-reanimated**: 3.17.2
-- **react-native-gesture-handler**: ^2.25.0
-- **react-native-svg**: ^15.12.0
-- **react-native-linear-gradient**: ^2.8.3
-
-### Desarrollo
-
-- **ESLint**: ^9.28.0
-- **Prettier**: 3.5.3
-- **Husky**: ^9.1.7
-- **Jest**: ^29.7.0
-
-## 📋 Requisitos Previos
-
+### Requisitos Previos
 - **Node.js**: >= 18.0.0
-- **npm** o **Yarn**
-- **React Native CLI**
-- **Android Studio** (para Android)
-- **Xcode** (para iOS - solo macOS)
+- **React Native CLI**: `npm install -g @react-native-community/cli`
+- **CocoaPods**: `gem install cocoapods` (solo para iOS)
 
-## ⚡ Instalación Rápida
-
-### 1. Clonar el repositorio
-
+### 1. Instalar Dependencias
 ```bash
-git clone [URL_DEL_REPOSITORIO]
-cd pruebatecnica
-```
-
-### 2. Instalar dependencias
-
-```bash
-# Usando npm
 npm install
-
-# O usando Yarn
-yarn install
 ```
 
-### 3. Configuración iOS (solo macOS)
-
+### 2. Configurar iOS (solo macOS)
 ```bash
-# Instalar CocoaPods dependencies
 cd ios && pod install && cd ..
 ```
 
-### 4. Iniciar Metro Bundler
-
-```bash
-# Usando npm
-npm start
-
-# O usando Yarn
-yarn start
-```
-
-### 5. Ejecutar la aplicación
+### 3. Ejecutar la Aplicación
 
 #### Android
-
 ```bash
-# Usando npm
 npm run android
-
-# O usando Yarn
-yarn android
 ```
 
 #### iOS
-
 ```bash
-# Usando npm
 npm run ios
-
-# O usando Yarn
-yarn ios
 ```
 
-## 🧹 Scripts Disponibles
+### 4. Iniciar Metro (si no se inicia automáticamente)
+```bash
+npm start
+```
 
-### Desarrollo
+## 🏗️ Decisiones Técnicas Tomadas
 
-- `npm start` - Inicia Metro Bundler
-- `npm run android` - Ejecuta en Android
-- `npm run ios` - Ejecuta en iOS
+### 1. **Arquitectura Modular**
+- **Decisión**: Implementar separación de componentes por pantallas
+- **Razón**: Facilita el mantenimiento, testing y escalabilidad
+- **Estructura**:
+  ```
+  src/components/
+  ├── MainScreen/     # 8 componentes modulares
+  ├── DetailScreen/   # 8 componentes modulares
+  ```
 
-### Calidad de Código
+### 2. **Gestión de Estado**
+- **Decisión**: Zustand para estado global
+- **Razón**: Más liviano que Redux, sintaxis simple, excelente TypeScript support
+- **Implementación**: Store centralizado para productos y navegación
 
-- `npm run lint` - Ejecuta ESLint
-- `npm run format` - Formatea código con Prettier
-- `npm run format:all` - Formatea todos los archivos TypeScript/JavaScript
+### 3. **Animaciones**
+- **Decisión**: React Native Reanimated 3
+- **Razón**: Animaciones en UI thread, mejor performance que Animated API
+- **Características**:
+  - Animaciones parallax en DetailScreen
+  - Transiciones escalonadas en MainScreen
+  - Efectos de scroll y gestos fluidos
 
-### Testing
+### 4. **Navegación**
+- **Decisión**: React Navigation v7
+- **Razón**: Estándar de la industria, soporte completo para TypeScript
+- **Configuración**: Stack Navigator con transiciones personalizadas
 
-- `npm test` - Ejecuta tests con Jest
+### 5. **Tipado Fuerte**
+- **Decisión**: TypeScript strict mode
+- **Razón**: Reduce errores en runtime, mejor DX, mantenibilidad
+- **Implementación**: Interfaces para todos los componentes y stores
 
-### Limpieza
+### 6. **Optimización de Performance**
+- **Decisión**: FlatList con optimizaciones
+- **Razón**: Renderizado eficiente de listas grandes
+- **Características**:
+  - `getItemLayout` para mejor scroll performance
+  - `removeClippedSubviews` para memoria
+  - `maxToRenderPerBatch` controlado
 
-- `npm run clean:node` - Limpia node_modules y reinstala
-- `npm run clean:android` - Limpieza completa de Android
-- `npm run clean:ios` - Limpieza completa de iOS
-- `npm run pod:reset` - Resetea CocoaPods en iOS
+### 7. **API Integration**
+- **Decisión**: Fake Store API con Axios
+- **Razón**: Datos realistas para demostración
+- **Implementación**: Service layer con error handling
+
+### 8. **Componentes Reutilizables**
+- **Decisión**: Atomic Design principles
+- **Razón**: Consistencia visual, reutilización, testing independiente
+- **Ejemplos**:
+  - `QuantitySelector` - Reutilizable en múltiples pantallas
+  - `ProductCard` - Consistente en diferentes contextos
+  - `LoadingState` - Estado global unificado
+
+### 9. **Manejo de Estados**
+- **Decisión**: Estados específicos (loading, error, empty)
+- **Razón**: UX profesional, feedback claro al usuario
+- **Implementación**: Componentes dedicados para cada estado
+
+### 10. **Styling Strategy**
+- **Decisión**: StyleSheet con constantes de diseño
+- **Razón**: Performance nativa, IntelliSense, tipado
+- **Características**:
+  - Paleta de colores consistente
+  - Spacing system estandarizado
+  - Responsive design patterns
+
+## 📊 Métricas de Mejora Logradas
+
+### Modularización Exitosa
+- **MainScreen**: 644 → 145 líneas (77% reducción)
+- **DetailScreen**: 813 → 228 líneas (72% reducción)
+- **Total componentes**: 16 componentes modulares creados
+- **Reutilización**: 5+ componentes reutilizables
+
+### Performance Optimizations
+- FlatList optimizado con `getItemLayout`
+- Animaciones en UI thread con Reanimated
+- Lazy loading de imágenes
+- Gesture handling optimizado
+
+## 🔧 Scripts Disponibles
+
+```bash
+# Desarrollo
+npm start              # Inicia Metro Bundler
+npm run android        # Ejecuta en Android
+npm run ios           # Ejecuta en iOS
+
+# Calidad de código
+npm run lint          # Ejecuta ESLint
+npm run format        # Formatea con Prettier
+
+# Limpieza
+npm run clean         # Limpia cache y reinstala
+```
 
 ## 📱 Funcionalidades Implementadas
 
-### 🔐 Autenticación
+### ✅ Pantalla Principal (MainScreen)
+- Lista de productos con categorías
+- Sección de productos destacados
+- Animaciones de entrada escalonadas
+- Pull-to-refresh y estados de carga
+- Navegación fluida a detalles
 
-- Sistema de login/registro completo
-- Persistencia de sesión
-- Recuperación de contraseña
-- Gestión de tokens JWT
+### ✅ Pantalla de Detalle (DetailScreen)
+- Hero image con efecto parallax
+- Header animado dual (fijo + scroll)
+- Información completa del producto
+- Selector de cantidad interactivo
+- Botones flotantes (favorito + carrito)
+- Animaciones de entrada/salida
 
-### 🧭 Navegación
+### ✅ Características Técnicas
+- TypeScript strict mode
+- Arquitectura modular escalable
+- Animaciones nativas fluidas
+- Estados de error y loading
+- Navegación con parámetros tipados
 
-- Stack Navigation para flujos lineales
-- Tab Navigation para navegación principal
-- Drawer Navigation para menú lateral
-- Deep linking configurado
+## 🎨 Diseño y UX
 
-### 📊 Gestión de Estado
-
-- Store global con Zustand
-- Persistencia automática
-- Estados de loading y error
-- Optimistic updates
-
-### 🌐 API Integration
-
-- Cliente HTTP robusto
-- Interceptores de request/response
-- Manejo de errores centralizado
-- Refresh de tokens automático
-
-### 🎨 UI/UX
-
-- Sistema de temas dinámico
-- Componentes reutilizables
-- Animaciones fluidas
-- Diseño responsive
-
-### 📱 Características Nativas
-
-- Almacenamiento seguro
-- Gestión de permisos
-- Navegación por gestos
-- Safe Area handling
-
-## 🔧 Configuración de Alias
-
-El proyecto utiliza alias de importación para una mejor organización:
-
-```typescript
-// Ejemplos de uso
-import {Button} from "@atoms/Button";
-import {LoginForm} from "@atoms-molecule/LoginForm";
-import {theme} from "@theme/index";
-import {User} from "@types/index";
-import {formatDate} from "@utils/dateUtils";
-```
-
-## 🧪 Testing
-
-```bash
-# Ejecutar todos los tests
-npm test
-
-# Ejecutar tests en modo watch
-npm test -- --watch
-
-# Ejecutar tests con coverage
-npm test -- --coverage
-```
-
-## 📝 Convenciones de Código
-
-### Nomenclatura
-
-- **Componentes**: PascalCase (`UserProfile.tsx`)
-- **Hooks**: camelCase con prefijo `use` (`useAuthStore.ts`)
-- **Utilities**: camelCase (`formatUtils.ts`)
-- **Constants**: SCREAMING_SNAKE_CASE (`API_ENDPOINTS.ts`)
-
-### Estructura de Archivos
-
-- Cada componente en su propia carpeta con `index.ts`
-- Tests junto a los archivos correspondientes (`.test.tsx`)
-- Tipos en archivos separados cuando son complejos
-
-## 🚀 Deployment
-
-### Android
-
-```bash
-# Build de producción
-npx react-native build-android --mode=release
-```
-
-### iOS
-
-```bash
-# Build de producción
-npx react-native build-ios --mode=Release
-```
-
-## 🤝 Contribución
-
-1. Fork del proyecto
-2. Crear rama para feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit de cambios (`git commit -am 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Crear Pull Request
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+- **Tema**: Moderno con gradientes y glassmorphism
+- **Colores**: Paleta profesional con acentos violeta/índigo
+- **Tipografía**: Jerarquía clara con pesos variables
+- **Espaciado**: Sistema consistente de 8px grid
+- **Componentes**: Cards con sombras, bordes redondeados
+- **Animaciones**: Transiciones suaves y naturales
 
 ## 👨‍💻 Autor
 
 **Guillermo Corredor**
-
-- Email: [tu-email@example.com]
-- LinkedIn: [tu-linkedin]
-- GitHub: [tu-github]
-
-## 📞 Soporte
-
-Si tienes alguna pregunta o problema:
-
-1. Revisa los [Issues existentes](../../issues)
-2. Crea un [nuevo Issue](../../issues/new)
-3. Contacta al autor directamente
+- Arquitectura modular implementada
+- Optimizaciones de performance aplicadas
+- Sistema de animaciones completo desarrollado
 
 ---
 
-⭐ **¡No olvides dar una estrella si este proyecto te fue útil!**
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
+**Nota**: Esta prueba técnica demuestra capacidades avanzadas en React Native, incluyendo arquitectura escalable, animaciones profesionales y optimizaciones de performance.
