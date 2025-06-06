@@ -11,6 +11,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import Animated, {
   SlideInRight,
   FadeIn,
+  BounceIn,
 } from "react-native-reanimated";
 
 interface ProductHeaderProps {
@@ -38,9 +39,19 @@ const ProductHeader: React.FC<ProductHeaderProps> = ({
 
       {/* Botón de prueba del ErrorBoundary (solo en desarrollo) */}
       {showTestButton && onTestError && (
-        <Animated.View entering={FadeIn.delay(400)}>
-          <TouchableOpacity style={styles.testErrorButton} onPress={onTestError} activeOpacity={0.7}>
-            <Text style={styles.testErrorButtonText}>🧪 Probar ErrorBoundary</Text>
+        <Animated.View entering={BounceIn.delay(800)} style={styles.testButtonContainer}>
+          <TouchableOpacity
+            style={styles.testErrorButton}
+            onPress={onTestError}
+            activeOpacity={0.8}
+          >
+            <View style={styles.buttonContent}>
+              <Text style={styles.testErrorIcon}>⚠️</Text>
+              <View style={styles.buttonTextContainer}>
+                <Text style={styles.testErrorButtonText}>Probar ErrorBoundary</Text>
+                <Text style={styles.testErrorButtonSubtext}>Solo desarrollo</Text>
+              </View>
+            </View>
           </TouchableOpacity>
         </Animated.View>
       )}
@@ -65,18 +76,47 @@ const styles = StyleSheet.create({
     color: "#64748b",
     lineHeight: 22
   },
-  testErrorButton: {
-    backgroundColor: "#f59e0b",
-    borderRadius: 8,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    marginTop: 8,
+  testButtonContainer: {
+    marginTop: 16,
     alignSelf: "flex-start"
+  },
+  testErrorButton: {
+    backgroundColor: "#ef4444",
+    borderRadius: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    shadowColor: "#ef4444",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+    borderWidth: 1,
+    borderColor: "#dc2626",
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10
+  },
+  testErrorIcon: {
+    fontSize: 20
+  },
+  buttonTextContainer: {
+    flex: 1
   },
   testErrorButtonText: {
     color: "#ffffff",
-    fontSize: 12,
-    fontWeight: "600"
+    fontSize: 14,
+    fontWeight: "700",
+    marginBottom: 2
+  },
+  testErrorButtonSubtext: {
+    color: "#fecaca",
+    fontSize: 11,
+    fontWeight: "500"
   }
 });
 

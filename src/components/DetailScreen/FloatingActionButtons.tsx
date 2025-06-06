@@ -30,13 +30,6 @@ const FloatingActionButtons: React.FC<FloatingActionButtonsProps> = ({
   onToggleFavorite,
   onAddToCart
 }) => {
-  // Debug: Verificar valores
-  console.log('FloatingActionButtons Debug:', {
-    quantity,
-    totalPrice,
-    isFavorite
-  });
-
   const animatedFabStyle = useAnimatedStyle(() => ({
     transform: [{scale: fabScale.value}],
   }));
@@ -63,7 +56,7 @@ const FloatingActionButtons: React.FC<FloatingActionButtonsProps> = ({
           style={styles.buttonGradient}
         >
           <Text style={styles.addToCartButtonText}>
-            🛒 Agregar {quantity > 1 ? `${quantity} x ${totalPrice}` : totalPrice}
+            🛒 Agregar{quantity > 1 ? ` (${quantity})` : ''} - {totalPrice}
           </Text>
         </LinearGradient>
       </TouchableOpacity>

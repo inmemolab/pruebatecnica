@@ -100,7 +100,7 @@ const MainScreen: React.FC = () => {
           totalProducts={products.length}
           totalCategories={Object.keys(productsByCategory).length}
           onTestError={handleTestError}
-          showTestButton={__DEV__}
+          showTestButton={false}
         />
 
         {/* Productos Destacados */}

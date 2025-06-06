@@ -3,7 +3,7 @@
 .DS_Store
 
 # Variables de entorno
-.env*
+#.env*
 
 # Xcode
 #
